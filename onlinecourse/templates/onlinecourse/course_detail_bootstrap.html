@@ -58,12 +58,12 @@
                 <div class="">{{question.text}}</div>  
                 {% for choice in question.choice_set.all %}
                 <div class=""> 
-                    <div class="form-check-input">{{choice.order}}. {{choice.text}}</div>  
+                    <div class="form-check-input">{{choice.text}}</div>  
                 </div>
                 {% endfor %}
                 </div>
             {% endfor %}
-            {% if user.is_authenticated %}
+            {% endif %}
             <!-- <HINT> Use Bootstrap Collapse to hide exam first, more details could be found here
             https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp-->
 
@@ -89,7 +89,7 @@
             -->
 
             <!-- A choice submission form example -->
-            <form id="questionform" action="point to a submit view" method="post">
+            <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post">
                         {%  for question in course.question_set.all  %}
                         <div class="card mt-1">
                             <div class="card-header"><h5>{{ question.text}}</h5></div>
